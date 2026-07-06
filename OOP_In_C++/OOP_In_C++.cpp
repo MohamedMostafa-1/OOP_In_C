@@ -37,7 +37,7 @@ public :
 		return _LastName;
 	}
 
-	//Porperty Through "="
+	//Property Through "="
 	__declspec(property(get = GetFristName, put = SetFirstName))string FristName;
 	__declspec(property(get = GetLastName, put = SetLastName)) string LastName;
 
@@ -134,8 +134,85 @@ public:
 		return 2;
 	}
 };
-
 int clsA::counter = 0; // Initlisation static Variable / Members
+
+
+
+class clsInfo {
+private:
+	int _ID;
+	string _FirstName;
+	string _LastName;
+	string _FullName;
+	string _Email;
+	string _Phone;
+
+public:
+	clsInfo(int ID , string FirstName , string LastName , string Email , string Phone) {
+		_ID = ID;
+		_FirstName = FirstName;
+		_LastName = LastName;
+		_Email = Email;
+		_Phone = Phone;
+	}
+	// Propertys Set
+	void SetFirstName(string FirstName) {
+		_FirstName = FirstName;
+	}
+	void SetLastName(string LastName) {
+		_LastName = LastName;
+	}
+	void SetEmail(string Email) {
+		_Email = Email;
+	}
+	void SetPhone(string Phone) {
+		_Phone = Phone;
+	}
+
+	// Properties Get
+	int ID() {
+		return _ID;
+	}
+	string FirstName() {
+		return _FirstName;
+	}
+	string LastName() {
+		return _LastName;
+	}
+	string FullName() {
+		_FullName = _FirstName + " " + _LastName;
+		return _FullName;
+	}
+	string Email() {
+		return _Email;
+	}
+	string Phone() {
+		return _Phone;
+	}
+
+	
+	void SendEmail(string Subject , string Body){
+		cout << "\nThe following massege sent successfully to Email: " << _Email << endl;
+		cout << "Subject: " << Subject << endl;
+		cout << "Body: " << Body << endl;
+	}
+	void SendSMS(string Body) {
+		cout << "\nThe following massege sent successfully to Phone: " << _Phone << endl;
+		cout << Body << endl;
+	}
+	void Print() {
+		cout << "\n Info\n";
+		cout << "__________________________________\n";
+		cout << "ID         : " << _ID << endl;
+		cout << "FirstName  : " << _FirstName << endl;
+		cout << "LastName   : " << _LastName << endl;
+		cout << "FullName   : " << FullName() << endl;
+		cout << "Email      : " << _Email << endl;
+		cout << "Phone      : " << _Phone << endl;
+		cout << "__________________________________\n";
+	}
+
+};
 
 
 int main()
@@ -189,9 +266,12 @@ int main()
 	Calculator1.Clear();
 	Calculator1.PrintResult();
 
-	
-	
-
+	cout <<"\n=========================================================\n";
+	// Info Person Exercise
+	clsInfo Info1(1 , "Mohamed" , "Mostafa" , "My@gmial.com" , "39999093209");
+	Info1.Print();
+	Info1.SendEmail("Hi", "How are you? ");
+	Info1.SendSMS("How are you? ");
 	cout << endl;
 	system("pause>0");
 }
