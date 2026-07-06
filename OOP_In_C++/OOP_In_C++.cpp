@@ -213,6 +213,109 @@ public:
 	}
 
 };
+class clsEmployes {
+private:
+	int _ID;
+	string _FirstName;
+	string _LastName;
+	string _FullName;
+	string _Email;
+	string _Phone;
+	string _Title;
+	string _Department;
+	double _Salary;
+
+public:
+	clsEmployes(int ID , string FirstName , string LastName , string Email , string Phone , string Title , string Department , double Salary) {
+		_ID = ID;
+		_FirstName = FirstName;
+		_LastName = LastName;
+		_Email = Email;
+		_Phone = Phone;
+		_Title = Title;
+		_Department = Department;
+		_Salary = Salary;
+	}
+	// Propertys Set
+	void SetFirstName(string FirstName) {
+		_FirstName = FirstName;
+	}
+	void SetLastName(string LastName) {
+		_LastName = LastName;
+	}
+	void SetEmail(string Email) {
+		_Email = Email;
+	}
+	void SetPhone(string Phone) {
+		_Phone = Phone;
+	}
+	void SetTitle(string Title) {
+		_Title = Title;
+	}
+	void SetDepartment(string Department) {
+		_Department = Department;
+	}
+	void SetSalary(double Salary) {
+		_Salary = Salary;
+	}
+
+
+	// Properties Get
+	int ID() {
+		return _ID;
+	}
+	string FirstName() {
+		return _FirstName;
+	}
+	string LastName() {
+		return _LastName;
+	}
+	string FullName() {
+		_FullName = _FirstName + " " + _LastName;
+		return _FullName;
+	}
+	string Email() {
+		return _Email;
+	}
+	string Phone() {
+		return _Phone;
+	}
+	string Title() {
+		return _Title;
+	}
+	string Department() {
+		return _Department;
+	}
+	double Salary() {
+		return _Salary;
+	}
+
+	
+	void SendEmail(string Subject , string Body){
+		cout << "\nThe following massege sent successfully to Email: " << _Email << endl;
+		cout << "Subject: " << Subject << endl;
+		cout << "Body: " << Body << endl;
+	}
+	void SendSMS(string Body) {
+		cout << "\nThe following massege sent successfully to Phone: " << _Phone << endl;
+		cout << Body << endl;
+	}
+	void Print() {
+		cout << "\n Info\n";
+		cout << "__________________________________\n";
+		cout << "ID         : " << _ID << endl;
+		cout << "FirstName  : " << _FirstName << endl;
+		cout << "LastName   : " << _LastName << endl;
+		cout << "FullName   : " << FullName() << endl;
+		cout << "Email      : " << _Email << endl;
+		cout << "Phone      : " << _Phone << endl;
+		cout << "Title      : " << _Title << endl;
+		cout << "Department : " << _Department << endl;
+		cout << "Salary     : " << _Salary << endl;
+		cout << "__________________________________\n";
+	}
+
+};
 
 
 int main()
@@ -272,6 +375,13 @@ int main()
 	Info1.Print();
 	Info1.SendEmail("Hi", "How are you? ");
 	Info1.SendSMS("How are you? ");
+
+	//  Homework - Employee Exercise
+	clsEmployes Employee1(1 , "Mohamed" , "Mostafa" , "My@gmial.com" , "39999093209" ,"Software Eng" , "Full Stack" , 10000);
+	Employee1.Print();
+	Employee1.SendEmail("Hi", "How are you? ");
+	Employee1.SendSMS("How are you? ");
+
 	cout << endl;
 	system("pause>0");
 }
