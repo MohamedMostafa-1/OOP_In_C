@@ -135,7 +135,30 @@ public:
 	}
 };
 int clsA::counter = 0; // Initlisation static Variable / Members
-
+class clsA2
+{
+private:
+	//only accessible inside this class, neither derived classes nor outside class.
+	int _Var1;
+	void _Fun1()
+	{
+		cout << "Function 1";
+	}
+protected:
+	//only accessible inside this class and all derived classes,but not outside class
+	int Var2;
+	void Fun2()
+	{
+		cout << "Function 1";
+	}
+public:
+	// Accessible inside this class, all derived classes, and outside class
+	int Var3;
+	void Fun3()
+	{
+		cout << "Function 1";
+	}
+};
 
 
 class clsPerson1 {
@@ -301,6 +324,18 @@ public:
 		cout << "__________________________________\n";
 	}
 };
+
+
+class clsB : public clsA2
+{
+public:
+	void Func1()
+	{
+		cout << clsA2::Var2;
+	}
+};
+
+
 int main()
 {
 
