@@ -138,7 +138,7 @@ int clsA::counter = 0; // Initlisation static Variable / Members
 
 
 
-class clsInfo {
+class clsPerson1 {
 private:
 	int _ID;
 	string _FirstName;
@@ -148,7 +148,7 @@ private:
 	string _Phone;
 
 public:
-	clsInfo(int ID , string FirstName , string LastName , string Email , string Phone) {
+	clsPerson1(int ID , string FirstName , string LastName , string Email , string Phone) {
 		_ID = ID;
 		_FirstName = FirstName;
 		_LastName = LastName;
@@ -213,42 +213,20 @@ public:
 	}
 
 };
-class clsEmployes {
+class clsEmployes  : public clsPerson1 {
 private:
-	int _ID;
-	string _FirstName;
-	string _LastName;
-	string _FullName;
-	string _Email;
-	string _Phone;
 	string _Title;
 	string _Department;
 	double _Salary;
 
 public:
-	clsEmployes(int ID , string FirstName , string LastName , string Email , string Phone , string Title , string Department , double Salary) {
-		_ID = ID;
-		_FirstName = FirstName;
-		_LastName = LastName;
-		_Email = Email;
-		_Phone = Phone;
+	clsEmployes(int ID , string FirstName , string LastName , string Email , string Phone , string Title , string Department , double Salary): 
+		clsPerson1(ID , FirstName , LastName , Email , Phone){
 		_Title = Title;
 		_Department = Department;
 		_Salary = Salary;
 	}
 	// Propertys Set
-	void SetFirstName(string FirstName) {
-		_FirstName = FirstName;
-	}
-	void SetLastName(string LastName) {
-		_LastName = LastName;
-	}
-	void SetEmail(string Email) {
-		_Email = Email;
-	}
-	void SetPhone(string Phone) {
-		_Phone = Phone;
-	}
 	void SetTitle(string Title) {
 		_Title = Title;
 	}
@@ -261,25 +239,6 @@ public:
 
 
 	// Properties Get
-	int ID() {
-		return _ID;
-	}
-	string FirstName() {
-		return _FirstName;
-	}
-	string LastName() {
-		return _LastName;
-	}
-	string FullName() {
-		_FullName = _FirstName + " " + _LastName;
-		return _FullName;
-	}
-	string Email() {
-		return _Email;
-	}
-	string Phone() {
-		return _Phone;
-	}
 	string Title() {
 		return _Title;
 	}
@@ -290,25 +249,16 @@ public:
 		return _Salary;
 	}
 
-	
-	void SendEmail(string Subject , string Body){
-		cout << "\nThe following massege sent successfully to Email: " << _Email << endl;
-		cout << "Subject: " << Subject << endl;
-		cout << "Body: " << Body << endl;
-	}
-	void SendSMS(string Body) {
-		cout << "\nThe following massege sent successfully to Phone: " << _Phone << endl;
-		cout << Body << endl;
-	}
+	//Function Overriding
 	void Print() {
 		cout << "\n Info\n";
 		cout << "__________________________________\n";
-		cout << "ID         : " << _ID << endl;
-		cout << "FirstName  : " << _FirstName << endl;
-		cout << "LastName   : " << _LastName << endl;
+		cout << "ID         : " << ID() << endl;
+		cout << "FirstName  : " << FirstName() << endl;
+		cout << "LastName   : " << LastName() << endl;
 		cout << "FullName   : " << FullName() << endl;
-		cout << "Email      : " << _Email << endl;
-		cout << "Phone      : " << _Phone << endl;
+		cout << "Email      : " << Email() << endl;
+		cout << "Phone      : " << Phone() << endl;
 		cout << "Title      : " << _Title << endl;
 		cout << "Department : " << _Department << endl;
 		cout << "Salary     : " << _Salary << endl;
@@ -371,7 +321,7 @@ int main()
 
 	cout <<"\n=========================================================\n";
 	// Info Person Exercise
-	clsInfo Info1(1 , "Mohamed" , "Mostafa" , "My@gmial.com" , "39999093209");
+	clsPerson1 Info1(1 , "Mohamed" , "Mostafa" , "My@gmial.com" , "39999093209");
 	Info1.Print();
 	Info1.SendEmail("Hi", "How are you? ");
 	Info1.SendSMS("How are you? ");
@@ -381,6 +331,8 @@ int main()
 	Employee1.Print();
 	Employee1.SendEmail("Hi", "How are you? ");
 	Employee1.SendSMS("How are you? ");
+
+	Employee1.Print();
 
 	cout << endl;
 	system("pause>0");
