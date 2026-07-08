@@ -267,7 +267,40 @@ public:
 
 };
 
+class clsDeveloper  : public clsEmployes {
+private :
+	string _MainProgrammingLanguage;
+public:
+	clsDeveloper(int ID, string FirstName, string LastName, string Email, string Phone, string Title, string Department, double Salary, string MainLanguage) :
+		clsEmployes(ID, FirstName, LastName, Email, Phone, Title, Department, Salary) {
+		_MainProgrammingLanguage = MainLanguage;
+	}
 
+	//Set
+	void SetMainLanguage(string MainLanguage) {
+		_MainProgrammingLanguage = MainLanguage;
+	}
+	//Get
+	string MainLangauge() {
+		return _MainProgrammingLanguage;
+	}
+
+	void Print() {
+		cout << "\n Info\n";
+		cout << "__________________________________\n";
+		cout << "ID            : " << ID() << endl;
+		cout << "FirstName     : " << FirstName() << endl;
+		cout << "LastName      : " << LastName() << endl;
+		cout << "FullName      : " << FullName() << endl;
+		cout << "Email         : " << Email() << endl;
+		cout << "Phone         : " << Phone() << endl;
+		cout << "Title         : " << Title() << endl;
+		cout << "Department    : " << Department() << endl;
+		cout << "Salary        : " << Salary() << endl;
+		cout << "Main Language : " << _MainProgrammingLanguage << endl;
+		cout << "__________________________________\n";
+	}
+};
 int main()
 {
 
@@ -333,6 +366,10 @@ int main()
 	Employee1.SendSMS("How are you? ");
 
 	Employee1.Print();
+
+	// Homework - Developer Exercise
+	clsDeveloper Developer1(2 , "Mohamed" , "Mostafa", "MyEmailDeveloper@gmail.com" ,"1104466" , "Software Enganeer" , "Web Devolopment" , 10000, "C++");
+	Developer1.Print();
 
 	cout << endl;
 	system("pause>0");
