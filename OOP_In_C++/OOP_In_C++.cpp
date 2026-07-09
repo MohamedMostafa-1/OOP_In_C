@@ -386,18 +386,33 @@ public :
 class clsX {
 private:
 	int _var1 ;
+	struct stAddress
+	{
+		string Name;
+		string Address;
+		string city;
+	};
 protected:
 	int var2 ;
 public:
 	int var3;
+	stAddress Address;
 	clsX() {
 		_var1 = 10;
 		var2  = 20;
 		var3  = 30;
+		Address.Address = "New Assuit City";
+		Address.Name = "Mohamed";
+		Address.city = "Lap lap lap";
 	}
 	//Recommendation
 	friend class clsY;
 	friend int MySum(clsX X); // Fiend Function
+	void Print() {
+		cout << Address.Address << endl;
+		cout << Address.Name << endl;
+		cout << Address.city << endl;
+	}
 };
 class clsY {
 public:
@@ -413,6 +428,85 @@ int MySum(clsX X) {
 	return X._var1 + X.var2 + X.var3;
 }
 
+
+class clsThing {
+private:
+	string _FullName;
+
+	class clsAddress {
+	private:
+		string _AddressLine1;
+		string _AddressLine2;
+		string _City;
+		string _Country;
+	public:
+		clsAddress(string AddressLine1 , string AddressLine2, string City, string Country ) {
+			_AddressLine1 = AddressLine1;
+			_AddressLine2 = AddressLine2;
+			_City = City;
+			_Country = Country;
+		}
+
+		string setAddressLine1(string AddressLine1)
+		{
+			_AddressLine1 = AddressLine1;
+		}
+		string AddressLine1()
+		{
+			return _AddressLine1;
+		}
+		string setAddressLine2(string AddressLine2)
+		{
+			_AddressLine2 = AddressLine2;
+		}
+		string AddressLine2()
+		{
+			return _AddressLine2;
+		}
+		string setCity(string City)
+		{
+			_City = City;
+		}
+		string City()
+		{
+			return _City;
+		}
+		string setCountry(string Country)
+		{
+			_Country = Country;
+		}
+		string Country()
+		{
+			return _Country;
+		}
+		void Print()
+		{
+			cout << "\nAddress:\n";
+			cout << _AddressLine1 << endl;
+			cout << _AddressLine2 << endl;
+			cout << _City << endl;
+			cout << _Country << endl;
+		}
+
+	};
+
+public:
+	string setFullName(string FullName)
+	{
+		_FullName = FullName;
+	}
+	string FullName()
+	{
+		return _FullName;
+	}
+
+	clsAddress Address = clsAddress("" , "" , "" , "");
+	clsThing(string FullName , string AddressLine1, string AddressLine2, string City, string Country) {
+		_FullName = FullName;
+		Address = clsAddress(AddressLine1, AddressLine2, City,Country);
+	}
+
+};
 int main()
 {
 
@@ -507,7 +601,11 @@ int main()
 	clsY Y1;
 	Y1.Desplay(X1);
 	cout << "\nSum Of Function Friend clsX: " << MySum(X1) << endl;
+	X1.Print();
 
+	//Nested Class 
+	clsThing Thing1("Mohammed Abu-Hadhoud", "Building 10","Queen Rania Street", "Amman", "Jordan");
+	Thing1.Address.Print();
 	cout << endl;
 	system("pause>0");
 }
