@@ -385,13 +385,19 @@ public :
 //Friend Class
 class clsX {
 private:
-	int _var1 = 10;
+	int _var1 ;
 protected:
-	int var2 = 20;
+	int var2 ;
 public:
-	int var3 = 30;
+	int var3;
+	clsX() {
+		_var1 = 10;
+		var2  = 20;
+		var3  = 30;
+	}
 	//Recommendation
 	friend class clsY;
+	friend int MySum(clsX X); // Fiend Function
 };
 class clsY {
 public:
@@ -402,6 +408,10 @@ public:
 		cout << "the variable var3 is : " << X1.var3 << endl;
 	}
 };
+
+int MySum(clsX X) {
+	return X._var1 + X.var2 + X.var3;
+}
 
 int main()
 {
@@ -496,6 +506,7 @@ int main()
 	clsX X1;
 	clsY Y1;
 	Y1.Desplay(X1);
+	cout << "\nSum Of Function Friend clsX: " << MySum(X1) << endl;
 
 	cout << endl;
 	system("pause>0");
