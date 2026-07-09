@@ -1,4 +1,6 @@
 #include <iostream>
+#include "clsThing.h"
+#include "clsA2.h"
 
 using namespace std;
 
@@ -302,30 +304,7 @@ public:
 };
 
 
-class clsA2
-{
-private:
-	//only accessible inside this class, neither derived classes nor outside class.
-	int _Var1;
-	void _Fun1()
-	{
-		cout << "Function 1";
-	}
-protected:
-	//only accessible inside this class and all derived classes,but not outside class
-	int Var2;
-	void Fun2()
-	{
-		cout << "Function 1";
-	}
-public:
-	// Accessible inside this class, all derived classes, and outside class
-	int Var3;
-	void Fun3()
-	{
-		cout << "Function 1";
-	}
-};
+
 class clsB : public clsA2
 {
 public:
@@ -429,84 +408,7 @@ int MySum(clsX X) {
 }
 
 
-class clsThing {
-private:
-	string _FullName;
 
-	class clsAddress {
-	private:
-		string _AddressLine1;
-		string _AddressLine2;
-		string _City;
-		string _Country;
-	public:
-		clsAddress(string AddressLine1 , string AddressLine2, string City, string Country ) {
-			_AddressLine1 = AddressLine1;
-			_AddressLine2 = AddressLine2;
-			_City = City;
-			_Country = Country;
-		}
-
-		string setAddressLine1(string AddressLine1)
-		{
-			_AddressLine1 = AddressLine1;
-		}
-		string AddressLine1()
-		{
-			return _AddressLine1;
-		}
-		string setAddressLine2(string AddressLine2)
-		{
-			_AddressLine2 = AddressLine2;
-		}
-		string AddressLine2()
-		{
-			return _AddressLine2;
-		}
-		string setCity(string City)
-		{
-			_City = City;
-		}
-		string City()
-		{
-			return _City;
-		}
-		string setCountry(string Country)
-		{
-			_Country = Country;
-		}
-		string Country()
-		{
-			return _Country;
-		}
-		void Print()
-		{
-			cout << "\nAddress:\n";
-			cout << _AddressLine1 << endl;
-			cout << _AddressLine2 << endl;
-			cout << _City << endl;
-			cout << _Country << endl;
-		}
-
-	};
-
-public:
-	string setFullName(string FullName)
-	{
-		_FullName = FullName;
-	}
-	string FullName()
-	{
-		return _FullName;
-	}
-
-	clsAddress Address = clsAddress("" , "" , "" , "");
-	clsThing(string FullName , string AddressLine1, string AddressLine2, string City, string Country) {
-		_FullName = FullName;
-		Address = clsAddress(AddressLine1, AddressLine2, City,Country);
-	}
-
-};
 int main()
 {
 
