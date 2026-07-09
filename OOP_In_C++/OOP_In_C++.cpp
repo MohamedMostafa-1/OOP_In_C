@@ -135,30 +135,6 @@ public:
 	}
 };
 int clsA::counter = 0; // Initlisation static Variable / Members
-class clsA2
-{
-private:
-	//only accessible inside this class, neither derived classes nor outside class.
-	int _Var1;
-	void _Fun1()
-	{
-		cout << "Function 1";
-	}
-protected:
-	//only accessible inside this class and all derived classes,but not outside class
-	int Var2;
-	void Fun2()
-	{
-		cout << "Function 1";
-	}
-public:
-	// Accessible inside this class, all derived classes, and outside class
-	int Var3;
-	void Fun3()
-	{
-		cout << "Function 1";
-	}
-};
 
 
 class clsPerson1 {
@@ -326,11 +302,40 @@ public:
 };
 
 
+class clsA2
+{
+private:
+	//only accessible inside this class, neither derived classes nor outside class.
+	int _Var1;
+	void _Fun1()
+	{
+		cout << "Function 1";
+	}
+protected:
+	//only accessible inside this class and all derived classes,but not outside class
+	int Var2;
+	void Fun2()
+	{
+		cout << "Function 1";
+	}
+public:
+	// Accessible inside this class, all derived classes, and outside class
+	int Var3;
+	void Fun3()
+	{
+		cout << "Function 1";
+	}
+};
 class clsB : public clsA2
 {
 public:
 	void Func1()
 	{
+		clsA2::Fun2();
+		clsA2::Fun3();
+		
+		Fun2();
+	
 		cout << clsA2::Var2;
 	}
 };
@@ -405,6 +410,11 @@ int main()
 	// Homework - Developer Exercise
 	clsDeveloper Developer1(2 , "Mohamed" , "Mostafa", "MyEmailDeveloper@gmail.com" ,"1104466" , "Software Enganeer" , "Web Devolopment" , 10000, "C++");
 	Developer1.Print();
+
+	// Protected
+	clsB B;
+	B.Fun3();
+	B.Func1();
 
 	cout << endl;
 	system("pause>0");
