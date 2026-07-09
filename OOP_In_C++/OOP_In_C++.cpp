@@ -360,6 +360,28 @@ public:
 };
 
 
+// Interfaces: Pure Virtual Functions and Abstract Classes
+//Interface , Contract , Abstract
+class clsMobile {
+	//Pure Virtual
+	virtual void Dial(string NumberPhone) = 0;
+	virtual void SendSMS(string PhoneNumber, string Text) = 0;
+	virtual void TakePicture() = 0;
+};
+
+class clsIphone : public clsMobile {
+public :
+	void Dial(string PhoneNumber) {
+
+	}
+	void SendSMS(string PhoneNumber, string Text) {
+
+	}
+	void TakePicture() {
+
+	}
+};
+
 int main()
 {
 
@@ -444,6 +466,10 @@ int main()
 	Peson1->Print();
 
 
+
+	//Interfaces: Pure Virtual Functions and Abstract Classes
+	clsIphone Iphone1;
+	Iphone1.TakePicture();
 
 	cout << endl;
 	system("pause>0");
