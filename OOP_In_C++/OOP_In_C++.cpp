@@ -341,6 +341,25 @@ public:
 };
 
 
+class clsPeson
+{
+public:
+	virtual void Print()
+	{
+		cout << "Hi, i'm a person!\n ";
+	}
+};
+
+class clsStudent : public clsPeson
+{
+public:
+	void Print()
+	{
+		cout << "Hi, I'm a student\n";
+	}
+};
+
+
 int main()
 {
 
@@ -412,9 +431,19 @@ int main()
 	Developer1.Print();
 
 	// Protected
-	clsB B;
-	B.Fun3();
-	B.Func1();
+	//clsB B;
+	//B.Fun3();
+	//B.Func1();
+
+	//Virtual Function
+
+	clsStudent Student1;
+	Student1.Print();
+	
+	clsPeson *Peson1 = &Student1;
+	Peson1->Print();
+
+
 
 	cout << endl;
 	system("pause>0");
