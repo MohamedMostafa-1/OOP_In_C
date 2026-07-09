@@ -382,6 +382,27 @@ public :
 	}
 };
 
+//Friend Class
+class clsX {
+private:
+	int _var1 = 10;
+protected:
+	int var2 = 20;
+public:
+	int var3 = 30;
+	//Recommendation
+	friend class clsY;
+};
+class clsY {
+public:
+	void Desplay(clsX X1) {
+
+		cout << "the variable var1 is : " << X1._var1 << endl;
+		cout << "the variable var2 is : " << X1.var2 << endl;
+		cout << "the variable var3 is : " << X1.var3 << endl;
+	}
+};
+
 int main()
 {
 
@@ -470,6 +491,11 @@ int main()
 	//Interfaces: Pure Virtual Functions and Abstract Classes
 	clsIphone Iphone1;
 	Iphone1.TakePicture();
+
+	// Friend Class 
+	clsX X1;
+	clsY Y1;
+	Y1.Desplay(X1);
 
 	cout << endl;
 	system("pause>0");
